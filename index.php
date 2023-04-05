@@ -2,9 +2,7 @@
 
 require_once('./environ.php');
 
-session_name(sessionName);
-session_set_cookie_params(604_800, '/~mkn/', '.soine.site', true, true);
-session_start();
+session_begin();
 
 $name = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name'] ?? '');
 ?>

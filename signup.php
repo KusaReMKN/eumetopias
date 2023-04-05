@@ -55,9 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$stmt->close();
 
 			/* Signing in */
-			session_name(sessionName);
-			session_set_cookie_params(604_800, '/~mkn/', '.soine.site', true, true);
-			session_start();
+			session_begin();
 			session_regenerate_id(true);
 			$_SESSION['userId'] = $db->lastInsertRowID();
 			$_SESSION['name']   = $name;

@@ -3,9 +3,7 @@
 require_once('./environ.php');
 require_once('./settings.php');
 
-session_name(sessionName);
-session_set_cookie_params(604_800, '/~mkn/', '.soine.site', true, true);
-session_start();
+session_begin();
 
 if (empty($_SESSION['userId'])) {
 	header('HTTP/1.1 403 Forbidden');
