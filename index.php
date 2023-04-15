@@ -68,7 +68,9 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <h1>Eumetopias</h1>
 <div class="right">
 <?= $you ?> としてログイン中。
-<a href="./setting.php">せってい</a> / <a href="./signout.php">さいんあうと</a>
+/ <a href="./">自分のやること</a>
+/ <a href="./setting.php">せってい</a>
+/ <a href="./signout.php">さいんあうと</a>
 </div>
 </header>
 <main>
