@@ -5,6 +5,17 @@ require_once('./environ.php');
 forceHttps();
 session_begin();
 
+if (empty($_GET['user'])) {
+	if (empty($_SESSION['userId'])) {
+		require_once('./gotaku.html');
+		die();
+	}
+	header('HTTP/1.1 303 See Other');
+	$location = "./?user=${$_SESSION['name']}";
+	header("Location: $location");
+	die("Click <a href='$location'>here</a> to continue...");
+}
+
 $name = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name'] ?? '');
 ?>
 <!DOCTYPE html>

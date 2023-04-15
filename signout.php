@@ -17,3 +17,4 @@ session_destroy();
 quit:
 header('HTTP/1.1 303 See Other');
 header('Location: ./');
+die("Click <a href='$location'>here</a> to continue...");
