@@ -72,6 +72,7 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 </div>
 </header>
 <main>
+<h2><?= $name ?> のやること一覧</h2>
 <?php
 if (count($tasks) > 0) {
 	echo <<<EOHTML
