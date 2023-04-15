@@ -140,7 +140,7 @@ EOHTML;
 	foreach ($priorities as $row)
 		printf('<option value="%d" %s>%s</option>',
 			htmlspecialchars($row['priId']),
-			$row['priId'] === 1 ? 'selected' : '',
+			$row['priId'] === 2 ? 'selected' : '',
 			htmlspecialchars($row['priTxt']));
 	echo <<<EOHTML
 </select>
