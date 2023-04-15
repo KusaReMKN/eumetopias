@@ -37,7 +37,7 @@ try {
 	$stmt->close();
 
 	$stmt = $db->prepare(
-		'SELECT taskId, title, Priorities.title as priority FROM Tasks' .
+		'SELECT taskId, Tasks.title, Priorities.title as priority FROM Tasks' .
 		' INNER JOIN Priorities ON Tasks.currPri=Priorities.priId WHERE owner=:owner;'
 	);
 	$stmt->bindValue(':owner', $userId, SQLITE3_INTEGER);
