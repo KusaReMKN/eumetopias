@@ -97,7 +97,6 @@ EOHTML;
 </tbody>
 </table>
 EOHTML;
-}
 } else {
 	echo "<p>$name さんのやることはないようです</p>";
 }
