@@ -47,6 +47,14 @@ try {
 		$tasks[] = $row;
 	$result->finalize();
 	$stmt->close();
+
+	$result = $db->execute(
+		'SELECT priId, priTxt FROM Priorities;'
+	);
+	$priorities = [];
+	while (($row = $result->fetchArray()) !== false)
+		$priorities[] = $row;
+	$result->finalize();
 } catch (Exception $err) {
 	die("Something wrong: $err");
 }
@@ -128,7 +136,12 @@ if (isset($_SESSION['userId']) && $userId === $_SESSION['userId'])
 <label for="priority">やばさ:</label>
 <br>
 <select id="priority" name="priority" required>
-<option>やばい</option>
+EOHTML;
+	foreach ($priorities as $row)
+		printf('<option value="%d">%s</option>',
+			htmlspecialchars($row['priId']),
+			htmlspecialchars($row['priTxt']));
+	echo <<<EOHTML
 </select>
 </div>
 <div>
