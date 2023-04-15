@@ -104,6 +104,7 @@ EOHTML;
 <?php
 if ($userId === $_SESSION['userId'])
 	echo <<<EOHTML
+<hr>
 <form target="./task.php" method="POST">
 <fieldset>
 <legend>新しくやることをつくる</legend>
