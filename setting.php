@@ -3,6 +3,7 @@
 require_once('./environ.php');
 require_once('./settings.php');
 
+forceHttps();
 session_begin();
 
 if (empty($_SESSION['userId'])) {

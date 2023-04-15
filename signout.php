@@ -2,6 +2,7 @@
 
 require_once('./environ.php');
 
+forceHttps();
 session_begin();
 
 /* Remove cookie */
