@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$db->enableExceptions(true);
 		$db->busyTimeout(3_000_000);
 
-		/* Is name already in use? */
 		$stmt = $db->prepare(
 			'SELECT userId, pwHash, display FROM Users WHERE name=:name;'
 		);

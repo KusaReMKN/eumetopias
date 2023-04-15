@@ -16,7 +16,37 @@ if (empty($_GET['user'])) {
 	die("Click <a href='$location'>here</a> to continue...");
 }
 
-$name = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name'] ?? '');
+try {
+	$db = new SQLite3(dbFile);
+	$db->enableExceptions(true);
+	$db->busyTimeout(3_000_000);
+
+	$stmt = $db->prepare(
+		'SELECT userId, display FROM Users WHERE name=:name;'
+	);
+	$stmt->bindValue(':name', $_GET['user'], SQLITE3_TEXT);
+	$result = $stmt->execute();
+	$row = $result->fetchArray();
+	$name = htmlspecialchars($row['display'] ?? $_GET['user']);
+	if (empty($row['userId'])) {
+		header('HTTP/1.1 404 Not Found');
+		die("$name: unknown user. <a href='./'>Go back</a>");
+	}
+	$userId = $row['userId'];
+	$result->finalize();
+	$stmt->close();
+
+	$stmt = $db->prepare(
+		'SELECT taskId, title, currPri FROM Tasks WHERE owner=:owner;'
+	);
+	$stmt->bindValue(':owner', $userId, SQLITE3_INTEGER);
+	$result = $stmt->execute();
+	$row = $result->fetchArray();
+} catch (Exception $err) {
+	die("Something wrong: $err");
+}
+
+$you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,13 +62,10 @@ $name = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name'] ?? '');
 <header>
 <h1>Eumetopias</h1>
 <div class="right">
-<?=
-strlen($name) === 0
-	? '<a href="./signin.php">さいんいん</a> / <a href="./signup.php">さいんあっぷ</a>'
-	: '<a href="./setting.php">せってい</a> / <a href="./signout.php">さいんあうと</a>';
-?>
+<?= $you ?> としてログイン中。
+<a href="./setting.php">せってい</a> / <a href="./signout.php">さいんあうと</a>
 </div>
 </header>
-<?= strlen($name) !== 0 ? "<p>こんにちは、$name さん！ やることはやった？</p>" : '' ?>
+<?php print_r($row); ?>
 </body>
 </html>
