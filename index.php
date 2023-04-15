@@ -67,10 +67,20 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <header>
 <h1>Eumetopias</h1>
 <div class="right">
-<?= $you ?>
+<?php
+if (empty($_SESSION['userId'])) {
+	echo <<<EOHTML
+<a href="./signin.php">さいんいん</a>
+/ <a href="./signup.php">さいんあっぷ</a>
+EOHTML;
+} else {
+	echo <<<EOHTML
+$you
 / <a href="./">じぶんの</a>
 / <a href="./setting.php">せってい</a>
 / <a href="./signout.php">さいんあうと</a>
+EOHTML;
+}
 </div>
 </header>
 <main>
