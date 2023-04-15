@@ -11,7 +11,7 @@ if (empty($_GET['user'])) {
 		die();
 	}
 	header('HTTP/1.1 303 See Other');
-	$location = "./?user=${$_SESSION['name']}";
+	$location = "./?user=${_SESSION['name']}";
 	header("Location: $location");
 	die("Click <a href='$location'>here</a> to continue...");
 }
