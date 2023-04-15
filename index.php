@@ -90,7 +90,7 @@ EOHTML;
 		$title  = htmlspecialchars($row['title']);
 		$priTxt = htmlspecialchars($row['priTxt']);
 		echo '<tr>';
-		echo "<td><a href='./?task=$taskId'>$title</a></td>";
+		echo "<td><a href='./task.php?task=$taskId'>$title</a></td>";
 		echo "<td>$priTxt</td>";
 		echo '</tr>';
 	}
