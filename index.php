@@ -113,7 +113,7 @@ EOHTML;
 ?>
 </main>
 <?php
-if (!isset($_SESSION['userId']) && $userId === $_SESSION['userId'])
+if (isset($_SESSION['userId']) && $userId === $_SESSION['userId'])
 	echo <<<EOHTML
 <hr>
 <form target="./task.php" method="POST">
