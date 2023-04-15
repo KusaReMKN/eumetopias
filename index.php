@@ -67,7 +67,7 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <header>
 <h1>Eumetopias</h1>
 <div class="right">
-<?= $you ?> としてログイン中。
+<?= $you ?>
 / <a href="./">じぶんの</a>
 / <a href="./setting.php">せってい</a>
 / <a href="./signout.php">さいんあうと</a>
@@ -101,5 +101,36 @@ EOHTML;
 }
 ?>
 </main>
+<?php
+if ($userId === $_SESSION['userId'])
+	echo <<<EOHTML
+<form target="./task.php" method="POST">
+<fieldset>
+<legend>新しくやることをつくる</legend>
+<div>
+<label for="title">やることの概要:</label>
+<br>
+<input type="text" id="title" name="title" placeholder=".+" required>
+</div>
+<div>
+<label for="priority">やばさ:</label>
+<br>
+<select id="priority" name="priority" required>
+<option>やばい</option>
+</select>
+</div>
+<div>
+<label for="details">やることの詳細 (省略可):</label>
+<br>
+<textarea id="details" name="details" placeholder=".*">
+</div>
+<hr>
+<div>
+<input type="submit" id="submit" value="やることをつくる">
+</div>
+</fieldset>
+</form>
+EOHTML;
+?>
 </body>
 </html>
