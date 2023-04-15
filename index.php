@@ -68,7 +68,7 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <h1>Eumetopias</h1>
 <div class="right">
 <?= $you ?> としてログイン中。
-/ <a href="./">自分のやること</a>
+/ <a href="./">じぶんの</a>
 / <a href="./setting.php">せってい</a>
 / <a href="./signout.php">さいんあうと</a>
 </div>
@@ -87,21 +87,17 @@ if (count($tasks) > 0) {
 </thead>
 <tbody>
 EOHTML;
-	foreach ($tasks as $row) {
-		$taskId = htmlspecialchars($row['taskId']);
-		$title  = htmlspecialchars($row['title']);
-		$priTxt = htmlspecialchars($row['priTxt']);
-		echo '<tr>';
-		echo "<td><a href='./task.php?task=$taskId'>$title</a></td>";
-		echo "<td>$priTxt</td>";
-		echo '</tr>';
-	}
+	foreach ($tasks as $row)
+		printf('<tr><td><a href="%s">%s</a></td><td>%s</td></tr>',
+			htmlspecialchars($row['taskId']),
+			htmlspecialchars($row['title']),
+			htmlspecialchars($row['priTxt']));
 	echo <<<EOHTML
 </tbody>
 </table>
 EOHTML;
 } else {
-	echo "<p>$name さんのやることはないようです</p>";
+	echo "<p>$name さんのやることはないようです。いいなぁ。</p>";
 }
 ?>
 </main>
