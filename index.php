@@ -97,7 +97,7 @@ EOHTML;
 </table>
 EOHTML;
 } else {
-	echo "<p>$name さんのやることはないようです。いいなぁ。</p>";
+	echo "<p>$name のやることはないようです。いいなぁ。</p>";
 }
 ?>
 </main>
