@@ -81,6 +81,7 @@ $you
 / <a href="./signout.php">さいんあうと</a>
 EOHTML;
 }
+?>
 </div>
 </header>
 <main>
