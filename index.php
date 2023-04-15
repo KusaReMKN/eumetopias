@@ -73,7 +73,7 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 </header>
 <main>
 <?php
-if (count($row) > 0) {
+if (count($tasks) > 0) {
 	echo <<<EOHTML
 <table>
 <thead>
