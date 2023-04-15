@@ -48,7 +48,7 @@ try {
 	$result->finalize();
 	$stmt->close();
 
-	$result = $db->execute(
+	$result = $db->query(
 		'SELECT priId, priTxt FROM Priorities;'
 	);
 	$priorities = [];
