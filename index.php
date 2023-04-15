@@ -122,7 +122,7 @@ if ($userId === $_SESSION['userId'])
 <div>
 <label for="details">やることの詳細 (省略可):</label>
 <br>
-<textarea id="details" name="details" placeholder=".*">
+<textarea id="details" name="details" placeholder=".*"></textarea>
 </div>
 <hr>
 <div>
