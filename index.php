@@ -45,6 +45,8 @@ try {
 	$tasks = [];
 	while (($row = $result->fetchArray()) !== false)
 		$tasks[] = $row;
+	$result->finalize();
+	$stmt->close();
 } catch (Exception $err) {
 	die("Something wrong: $err");
 }
@@ -69,7 +71,37 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <a href="./setting.php">せってい</a> / <a href="./signout.php">さいんあうと</a>
 </div>
 </header>
-<?= count($tasks) ?>
-<?php print_r($tasks); ?>
+<main>
+<?php
+if (count($row) > 0) {
+	echo <<<EOHTML
+<table>
+<thead>
+<tr>
+<th>やること</th>
+<th>やばさ</th>
+</tr>
+</thead>
+<tbody>
+EOHTML;
+	foreach ($tasks as $row) {
+		$taskId = htmlspecialchars($row['taskId']);
+		$title  = htmlspecialchars($row['title']);
+		$priTxt = htmlspecialchars($row['priTxt']);
+		echo '<tr>';
+		echo "<td><a href='./?task=$taskId'>$title</a></td>";
+		echo "<td>$priTxt</td>";
+		echo '</tr>';
+	}
+	echo <<<EOHTML
+</tbody>
+</table>
+EOHTML;
+}
+} else {
+	echo "<p>$name さんのやることはないようです</p>";
+}
+?>
+</main>
 </body>
 </html>
