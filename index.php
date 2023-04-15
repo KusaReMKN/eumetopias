@@ -38,7 +38,7 @@ try {
 
 	$stmt = $db->prepare(
 		'SELECT taskId, title, priTxt FROM Tasks INNER JOIN Priorities ON currPri=priId'
-		. ' WHERE owner=:owner ORDER BY currPri DESC;'
+		. ' WHERE owner=:owner ORDER BY ctime DESC ORDER BY currPri DESC;'
 	);
 	$stmt->bindValue(':owner', $userId, SQLITE3_INTEGER);
 	$result = $stmt->execute();
