@@ -13,15 +13,15 @@ CREATE TABLE IF NOT EXISTS Priorities (
 	-- ID used to identify the priority
 	priId	INTEGER	PRIMARY KEY NOT NULL,
 	-- Title of the priority
-	title	TEXT	NOT NULL
+	priTxt	TEXT	NOT NULL
 );
-INSERT INTO Priorities ( priId, title ) VALUES (  3, 'やらないとまずいこと' );
-INSERT INTO Priorities ( priId, title ) VALUES (  2, 'やること'             );
-INSERT INTO Priorities ( priId, title ) VALUES (  1, 'やりたいこと'         );
-INSERT INTO Priorities ( priId, title ) VALUES (  0, 'やったこと'           );
-INSERT INTO Priorities ( priId, title ) VALUES ( -1, 'やりたくないこと'     );
-INSERT INTO Priorities ( priId, title ) VALUES ( -2, 'やらないこと'         );
-INSERT INTO Priorities ( priId, title ) VALUES ( -3, 'やるとまずいこと'     );
+INSERT INTO Priorities ( priId, priTxt ) VALUES (  3, 'やらないとまずいこと' );
+INSERT INTO Priorities ( priId, priTxt ) VALUES (  2, 'やること'             );
+INSERT INTO Priorities ( priId, priTxt ) VALUES (  1, 'やりたいこと'         );
+INSERT INTO Priorities ( priId, priTxt ) VALUES (  0, 'やったこと'           );
+INSERT INTO Priorities ( priId, priTxt ) VALUES ( -1, 'やりたくないこと'     );
+INSERT INTO Priorities ( priId, priTxt ) VALUES ( -2, 'やらないこと'         );
+INSERT INTO Priorities ( priId, priTxt ) VALUES ( -3, 'やるとまずいこと'     );
 
 CREATE TABLE IF NOT EXISTS Tasks (
 	-- ID used to identify the task
