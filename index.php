@@ -49,7 +49,7 @@ try {
 	$stmt->close();
 
 	$result = $db->query(
-		'SELECT priId, priTxt FROM Priorities;'
+		'SELECT priId, priTxt FROM Priorities ORDER BY priId DESC;'
 	);
 	$priorities = [];
 	while (($row = $result->fetchArray()) !== false)
@@ -138,8 +138,9 @@ if (isset($_SESSION['userId']) && $userId === $_SESSION['userId'])
 <select id="priority" name="priority" required>
 EOHTML;
 	foreach ($priorities as $row)
-		printf('<option value="%d">%s</option>',
+		printf('<option value="%d" %s>%s</option>',
 			htmlspecialchars($row['priId']),
+			$row['priId'] === 1 ? 'selected' : '',
 			htmlspecialchars($row['priTxt']));
 	echo <<<EOHTML
 </select>
