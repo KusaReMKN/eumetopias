@@ -66,7 +66,7 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <a href="./setting.php">せってい</a> / <a href="./signout.php">さいんあうと</a>
 </div>
 </header>
-<?= $row ?>
+<?= $row === false ? '0' : count($row) ?>
 <?php print_r($row); ?>
 </body>
 </html>
