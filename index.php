@@ -41,7 +41,9 @@ try {
 	);
 	$stmt->bindValue(':owner', $userId, SQLITE3_INTEGER);
 	$result = $stmt->execute();
-	$row = $result->fetchArray();
+	$tasks = [];
+	while (($row = $result->fetchArray()) !== false)
+		$tasks[] = $row;
 } catch (Exception $err) {
 	die("Something wrong: $err");
 }
@@ -66,7 +68,7 @@ $you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
 <a href="./setting.php">せってい</a> / <a href="./signout.php">さいんあうと</a>
 </div>
 </header>
-<?= $row === false ? '0' : count($row) ?>
-<?php print_r($row); ?>
+<?= count($tasks) ?>
+<?php print_r($tasks); ?>
 </body>
 </html>
