@@ -51,7 +51,7 @@ try {
 	die("Something wrong: $err");
 }
 
-$you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name']);
+$you = htmlspecialchars($_SESSION['display'] ?? $_SESSION['name'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="ja">
